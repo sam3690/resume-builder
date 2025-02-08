@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="resume.css">
+    <link rel="stylesheet" href="resume.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+textarea,
+button,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Base styles */
+:root {
+    --primary-color: #000000;
+    --background-color: lightblue;
+    --white: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --input-border: #dddddd;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: var(--background-color);
+    min-height: 100vh;
+    color: var(--primary-color);
+}
+
+/* Resume Container */
+.resume {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+input,
+textarea {
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    border: 1px solid var(--input-border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* File input styling */
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Button styles */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+button {
+    width: auto;
+    min-width: 150px;
+    max-width: 300px;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.hidden {
+    display: none;
+}
+
+
+::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+
+    .resume {
+        width: 95%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    input, 
+    textarea {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        max-width: none;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .resume {
+        width: 100%;
+        padding: 10px;
+        margin: 5px auto;
+        border-radius: 6px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    input,
+    textarea {
+        padding: 8px;
+        font-size: 16px; 
+    }
+
+    input[type="file"] {
+        padding: 6px;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        padding: 6px 12px;
+    }
+}
+
+
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+
+    .resume {
+        box-shadow: none;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        display: none;
+    }
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.hidden1{
+    display: none;
+}
+       
+    </style>
+</head>
+<body>
+
+    
+    <div class ="resume">
+        <h2>Resume Builder</h2>
+        <form id="resume-form">
+
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="role">Role (e.g., Developer, Designer):</label>
+                <input type="text" id="role" name="role" placeholder="Enter your role">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn Profile:</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+            </div>
+            <div class="form-group">
+                <label for="facebook">Facebook Profile:</label>
+                <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook profile URL">
+            </div>
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="picture" name="profile-picture" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <textarea id="education" name="education" placeholder="Describe your education" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <textarea id="skills" name="skills" placeholder="List your skills" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience:</label>
+                <textarea id="experience" name="experience" placeholder="Describe your work experience" rows="4"></textarea>
+            </div>
+           <div class="button">
+            <button type="submit" id="submit">Create Resume</button>
+        
+        </div>
+        </form>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container  hidden" id="resume-page">
+        <div class="left_Side">
+            <div class="profileText">
+                <div class="imgBx">
+                    <img class="photo" id="profile-picture" src="">
+                </div>
+                <br>
+                <h2 id="resume-name"> <br></h2>
+                <span id="resume-role"></span> 
+            </div>
+
+            <div class="contactInfo">
+                <h3 class="title">Contact Info</h3>
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="text" id="resume-phone"></span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                        <span class="text" id="resume-email"></span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                        <span class="text" id="resume-linkedin"></span>
+                    </li>   
+                     <li>
+                        <span class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                        <span class="text" id="resume-facebook"></span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span class="text" id="resume-address"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contactInfo education">
+                <h3 class="title">Education</h3>
+                <ul id="">
+                    <li id="resume-education">
+                 
+                    </li>
+                  
+                    
+                </ul>
+            </div>
+
+            <div class="contactInfo language">
+                <h3 class="title"></h3>
+                <ul>
+                    <li>
+                        <span class="text"></span>
+                    
+                    </li>
+                    <li>
+                        <span class="text"></span>
+                     
+                    </li>
+                    <li>
+                        <span class="text"></span>
+                       
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right_Side">
+      
+
+            <div class="about">
+                <h2 class="title2">Experience</h2>
+                <div class="box" id="resume-experience">
+                    
+                </div>
+            </div>
+
+            <div class="about skills">
+                <h2 class="title2">Skills</h2>
+                <li class="box" id="resume-skills">
+                 
+                </li>
+               
+               
+            </div>
+        </div>
+    </div>
+    <div class="button ">
+        
+        <button class="back" id="resume-back" onclick="window.href='index.html'">Back</button>
+     
+        <button class="download" id="share-button">Share resume</button>
+    </div>
+</div>
+
+    <script src="select.js"></script>
+ 
+</body>
+</html>

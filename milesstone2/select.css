@@ -1,0 +1,54 @@
+.home{
+width: 100%;
+height: 100vh;
+}
+
+
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.header{
+    font-size: 5rem;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(4, 0fr);
+    align-items: center;
+    gap: 20p;
+    gap: 71px;
+}
+.image img{
+    width: 23rem;
+    height: auto;
+    margin-top: 29px;
+}
+
+
+/* select.css */
+.resume-select {
+    transition: border 0.3s ease; /* Optional for smooth border transition */
+}
+
+.selected {
+    border: 2px solid black; /* Apply a border when selected */
+}
+
+.go-to-resume-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: aquamarine;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 22px;
+}
